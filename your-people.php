@@ -223,75 +223,6 @@ function register_person_meta() {
 }
 add_action( 'init', __NAMESPACE__ . '\register_person_meta' );
 
-
-/**
- * Add custom columns to the person post type admin list.
- *
- * @param array $columns The existing columns.
- * @return array Modified columns.
- */
-function add_person_admin_columns( $columns ) {
-    $new_columns = array();
-    foreach ( $columns as $key => $value ) {
-        if ( $key === 'title' ) {
-            $new_columns['featured_image'] = __( 'Image', 'your-people' );
-        }
-        $new_columns[$key] = $value;
-    }
-    return $new_columns;
-}
-add_filter( 'manage_person_posts_columns', __NAMESPACE__ . '\add_person_admin_columns' );
-
-/**
- * Render custom column content in the person post type admin list.
- *
- * @param string $column_name The name of the column.
- * @param int    $post_id     The current post ID.
- */
-function render_person_admin_columns( $column_name, $post_id ) {
-    if ( $column_name === 'featured_image' ) {
-        $thumbnail_id = get_post_thumbnail_id( $post_id );
-        if ( $thumbnail_id ) {
-            $thumbnail_url = wp_get_attachment_image_url( $thumbnail_id, 'thumbnail' );
-            echo '<div class="person-thumbnail" style="background-image: url(' . esc_url( $thumbnail_url ) . ');"></div>';
-        } else {
-            echo '—';
-        }
-    }
-}
-add_action( 'manage_person_posts_custom_column', __NAMESPACE__ . '\render_person_admin_columns', 10, 2 );
-
-/**
- * Add styles for the person thumbnail in admin columns.
- */
-function person_admin_column_styles() {
-    echo '<style>
-        .column-featured_image { width: 50px; }
-        .person-thumbnail {
-            width: 40px;
-            height: 40px;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-radius: 2px;
-        }
-    </style>';
-}
-add_action( 'admin_head', __NAMESPACE__ . '\person_admin_column_styles' );
-
-/**
- * Change the 'Title' column label to 'Name' for the person post type.
- *
- * @param array $columns The column labels.
- * @return array Modified column labels.
- */
-function modify_person_column_labels( $columns ) {
-    $columns['title'] = __( 'Name', 'your-people' );
-    return $columns;
-}
-add_filter( 'manage_person_posts_columns', __NAMESPACE__ . '\modify_person_column_labels' );
-
-
 /**
  * Enqueue the Editor scripts and styles.
  */
@@ -339,22 +270,25 @@ function get_template_content( $template ) {
  */
 function register_plugin_templates() {
 	
-    register_block_template( 'people-plugin-templates//single-person', [
+    register_block_template( 'your-people//single-person', [
         'title'       => __( 'Single Person', 'your-people' ),
         'description' => __( 'Displays a single person\'s profile page.', 'your-people' ),
         'content'     => get_template_content( 'single-person.php' )
     ] );
 
-    register_block_template( 'people-plugin-templates//archive-person', [
+    register_block_template( 'your-people//archive-person', [
         'title'       => __( 'Archive Person', 'your-people' ),
         'description' => __( 'Displays a list of people.', 'your-people' ),
         'content'     => get_template_content( 'archive-person.php' )
     ] );
 
-    register_block_template( 'people-plugin-templates//taxonomy-role', [
+    register_block_template( 'your-people//taxonomy-role', [
         'title'       => __( 'Role Archive', 'your-people' ),
         'description' => __( 'Displays a list of people in a specific role.', 'your-people' ),
         'content'     => get_template_content( 'taxonomy-role.php' )
     ] );
 }
 add_action( 'init', __NAMESPACE__ . '\register_plugin_templates' );
+
+// Admin
+require_once __DIR__ . '/includes/admin.php';
