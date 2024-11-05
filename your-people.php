@@ -224,48 +224,6 @@ function register_person_meta() {
 add_action( 'init', __NAMESPACE__ . '\register_person_meta' );
 
 /**
- * Enqueue the Editor scripts and styles.
- */
-function enqueue_editor_scripts_styles() {
-	global $pagenow, $typenow;
-
-	// Check if we are on the Post Editor and the post type is "post".
-	if (
-		'post.php' === $pagenow &&
-		'person' === $typenow
-	) {
-		$assets = include plugin_dir_path( __FILE__ ) . 'build/editor/index.asset.php';
-		wp_enqueue_script(
-			'person_meta_editor_scripts',
-			plugin_dir_url( __FILE__ ) . 'build/editor/index.js',
-			$assets['dependencies'],
-			$assets['version'],
-			true
-		);
-
-		wp_enqueue_style(
-			'person_meta_editor_styles',
-			plugin_dir_url( __FILE__ ) . 'build/editor/index.css',
-			array(),
-			$assets['version']
-		);
-	}
-}
-add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_editor_scripts_styles' );
-
-/**
- * Helper function to get the content of a template file.
- * 
- * @param string $template The name of the template file.
- * @return string The content of the template file.
- */
-function get_template_content( $template ) {
-	ob_start();
-	include __DIR__ . "/templates/{$template}";
-	return ob_get_clean();
-}
-
-/**
  * Register the plugin templates.
  */
 function register_plugin_templates() {
@@ -290,5 +248,17 @@ function register_plugin_templates() {
 }
 add_action( 'init', __NAMESPACE__ . '\register_plugin_templates' );
 
-// Admin
+/**
+ * Helper function to get the content of a template file.
+ * 
+ * @param string $template The name of the template file.
+ * @return string The content of the template file.
+ */
+function get_template_content( $template ) {
+	ob_start();
+	include __DIR__ . "/templates/{$template}";
+	return ob_get_clean();
+}
+
 require_once __DIR__ . '/includes/admin.php';
+require_once __DIR__ . '/includes/editor.php';
