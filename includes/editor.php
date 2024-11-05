@@ -11,10 +11,10 @@ function enqueue_editor_scripts_styles() {
 		'post.php' === $pagenow &&
 		'person' === $typenow
 	) {
-		$assets = include plugin_dir_path( __FILE__ ) . 'build/editor/index.asset.php';
+		$assets = include plugin_dir_path( __FILE__ ) . '../build/editor/index.asset.php';
 		wp_enqueue_script(
 			'person_meta_editor_scripts',
-			plugin_dir_url( __FILE__ ) . 'build/editor/index.js',
+			plugin_dir_url( __FILE__ ) . '../build/editor/index.js',
 			$assets['dependencies'],
 			$assets['version'],
 			true
@@ -22,7 +22,7 @@ function enqueue_editor_scripts_styles() {
 
 		wp_enqueue_style(
 			'person_meta_editor_styles',
-			plugin_dir_url( __FILE__ ) . 'build/editor/index.css',
+			plugin_dir_url( __FILE__ ) . '../build/editor/index.css',
 			array(),
 			$assets['version']
 		);
