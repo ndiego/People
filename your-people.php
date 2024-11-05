@@ -95,11 +95,11 @@ function register_person_meta() {
         'person',
         'yp_job_title',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Job Title', 'your-people' ),
-            'description'  => __( 'The job title of the person', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Job Title', 'your-people' ),
+            'description'       => __( 'The person\'s job title', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -108,11 +108,11 @@ function register_person_meta() {
         'person',
         'yp_professional_designation',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Professional Designation', 'your-people' ),
-            'description'  => __( 'The professional designation of the person (MD, RN, NP, etc.)', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Professional Designation', 'your-people' ),
+            'description'       => __( 'The professional designation of the person (MD, RN, NP, etc.)', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -121,11 +121,11 @@ function register_person_meta() {
         'person',
         'yp_institution',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Institution', 'your-people' ),
-            'description'  => __( 'The institution of the person', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Institution/Employer', 'your-people' ),
+            'description'       => __( 'The person\'s institution or employer', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -134,11 +134,11 @@ function register_person_meta() {
         'person',
         'yp_location',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Location', 'your-people' ),
-            'description'  => __( 'The location of the person', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Location', 'your-people' ),
+            'description'       => __( 'The person\'s location', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -148,10 +148,10 @@ function register_person_meta() {
         'yp_email_address',
         array(
             'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Email', 'your-people' ),
-            'description'  => __( 'The email address of the person', 'your-people' ),
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Email', 'your-people' ),
+            'description'       => __( 'The person\'s email address', 'your-people' ),
             'sanitize_callback' => 'sanitize_email'
         )
     );
@@ -160,11 +160,11 @@ function register_person_meta() {
         'person',
         'yp_website_url',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Website', 'your-people' ),
-            'description'  => __( 'The personal website of the person', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Website', 'your-people' ),
+            'description'       => __( 'The person\'s website', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -173,11 +173,11 @@ function register_person_meta() {
         'person',
         'yp_facebook_url',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Facebook URL', 'your-people' ),
-            'description'  => __( 'The Facebook URL of the person', 'your-people' ),
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Facebook URL', 'your-people' ),
+            'description'       => __( 'The person\'s Facebook URL', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -187,10 +187,10 @@ function register_person_meta() {
         'yp_linkedin_url',
         array(
             'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'LinkedIn URL', 'your-people' ),
-            'description'  => __( 'The LinkedIn URL of the person', 'your-people' ),
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'LinkedIn URL', 'your-people' ),
+            'description'       => __( 'The person\'s LinkedIn URL', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
@@ -199,12 +199,12 @@ function register_person_meta() {
         'person',
         'yp_x_url',
         array(
-            'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'               => __( 'X URL', 'your-people' ),
-            'description'         => __( 'The X URL of the person', 'your-people' ),
-            'sanitize_callback'   => 'wp_strip_all_tags'
+            'show_in_rest'      => true,
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'X URL', 'your-people' ),
+            'description'       => __( 'The person\'s X URL', 'your-people' ),
+            'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
 
@@ -213,10 +213,10 @@ function register_person_meta() {
         'yp_instagram_url',
         array(
             'show_in_rest' => true,
-            'single'       => true,
-            'type'         => 'string',
-            'label'        => __( 'Instagram URL', 'your-people' ),
-            'description'  => __( 'The Instagram URL of the person', 'your-people' ),
+            'single'            => true,
+            'type'              => 'string',
+            'label'             => __( 'Instagram URL', 'your-people' ),
+            'description'       => __( 'The person\'s Instagram URL', 'your-people' ),
             'sanitize_callback' => 'wp_strip_all_tags'
         )
     );
